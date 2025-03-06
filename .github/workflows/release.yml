@@ -26,7 +26,7 @@ jobs:
       uses: mavrosxristoforos/get-xml-info@2.0
       with:
         xml-file: './RAID-DynamicLocalization/supermod.xml'
-        xpath: '//mod'
+        xpath: '//mod/@version'
 
     - name: Create Release
       # https://github.com/marketplace/actions/create-release
@@ -34,8 +34,8 @@ jobs:
       uses: ncipollo/release-action@v1.16.0
       with:
         allowUpdates: true
-        tag: ${{ steps.getxml.outputs.version }}
-        name: Release ${{ steps.getxml.outputs.version }}
+        tag: ${{ steps.getxml.outputs }}
+        name: Release ${{ steps.getxml.outputs }}
         draft: false
         prerelease: false
         body: |
@@ -58,7 +58,7 @@ jobs:
     - name: Update version number in meta file
       id: create_meta_file_v2
       run: |
-        $(cat .\.github\meta.json).Replace("%VERSION%", ${{ steps.getxml.outputs.version }}) > ./meta.json
+        $(cat .\.github\meta.json).Replace("%VERSION%", ${{ steps.getxml.outputs }}) > ./meta.json
     - name: Upload meta file to Release
       id: upload-meta-asset 
       uses: actions/upload-release-asset@v1
