@@ -26,7 +26,7 @@ jobs:
       # https://github.com/marketplace/actions/action-zip
       uses: montudor/action-zip@v1
       with:
-        args: zip -qq -r ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
+        args: zip -qq -r .\RAID-DynamicLocalization.zip .i .\RAID-DynamicLocalization
     #- name: Archive Mod
       #run: |
          #.\.github\7za.exe -tzip a ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
