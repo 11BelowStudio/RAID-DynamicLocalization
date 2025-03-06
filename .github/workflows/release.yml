@@ -48,7 +48,7 @@ jobs:
         json-file-path: './.github/meta.json'
         output-file-name: meta.json
         field-value-pairs: |
-          $[0][version]: ${{ steps.getxml.outputs.info }}
+          $[0]["version"]: "${{ steps.getxml.outputs.info }}"
     - run: |
         cat ${{ steps.render.outputs.rendered-json-file }}
 
