@@ -60,7 +60,7 @@ jobs:
         # Newline-delimited list of path globs for asset files to upload
         files: |
           RAID-DynamicLocalization.zip
-          meta.json
+          .\.github\meta.json
         # Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Can be `true`, `false`, or `legacy`. Uses GitHub api default if not provided
         make_latest: legacy
   
