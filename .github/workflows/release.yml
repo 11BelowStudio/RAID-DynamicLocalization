@@ -26,7 +26,7 @@ jobs:
       # https://github.com/marketplace/actions/action-zip
       uses: montudor/action-zip@v1
       with:
-        args: zip -qq -r .\RAID-DynamicLocalization.zip . -i .\RAID-DynamicLocalization
+        args: zip -qq -r './RAID-DynamicLocalization.zip' './RAID-DynamicLocalization'
     #- name: Archive Mod
       #run: |
          #.\.github\7za.exe -tzip a ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
@@ -45,7 +45,7 @@ jobs:
       # https://github.com/marketplace/actions/json-templater
       uses: georgepstaylor/render-json-template@v0.0.13
       with:
-        json-file-path: .\.github\meta.json
+        json-file-path: './.github/meta.json'
         output-file-name: meta.json
         field-value-pairs: |
           $[0][version]: ${{ steps.getxml.outputs.info }}
