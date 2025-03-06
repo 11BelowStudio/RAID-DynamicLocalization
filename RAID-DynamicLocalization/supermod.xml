@@ -7,9 +7,12 @@
 	color="74 65 42"
 	version="1.0.0"
 	priority="1000"
+	is_library = "true"
 >
 	<updates>
-        <!--update provider="modworkshop" identifier="" important="true"/-->
+        <update identifier="DLC_autoupdate" important="true">
+			<host meta="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/download/refs%2Fheads%2Fmain/meta.json"/>
+		</update>
     </updates>
 
 	<hooks>
