@@ -36,7 +36,6 @@ jobs:
         output-file-name: meta.json
         field-value-pairs: |
           $[0][version]: ${{ steps.getxml.outputs.info }}
-          $.items: [1.7, "hello"]
     - run: |
         cat ${{ steps.render.outputs.rendered-json-file }}
 
