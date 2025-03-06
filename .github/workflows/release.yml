@@ -17,11 +17,12 @@ jobs:
       run: |
          .\.github\7za.exe -tzip a ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
       shell: powershell
+    
     - name: Create New Release
       id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: actions/create-release@v2
+      #env:
+      #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
