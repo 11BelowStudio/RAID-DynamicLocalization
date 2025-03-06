@@ -28,7 +28,8 @@ jobs:
         xml-file: './RAID-DynamicLocalization/supermod.xml'
         xpath: '//mod/@version'
 
-    - id: render meta.json
+    - name: render meta.json
+      id: render
       # https://github.com/marketplace/actions/json-templater
       uses: georgepstaylor/render-json-template@v0.0.13
       with:
