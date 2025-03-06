@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <mod name="DLC - Dynamic Localization"
-	global_key="DynamicLocalization"
+	global_key="RAID_DynamicLocalization"
 	log_name="DLC"
 	description="Provides functionality for changing localized strings whenever you want!"
 	author="11BelowStudio"
@@ -8,9 +8,10 @@
 	version="1.0.0"
 	priority="1000"
 	is_library = "true"
+	undisablable = "true"
 >
 	<updates>
-        <update identifier="DLC_autoupdate" important="true">
+        <update identifier="RAID_DynamicLocalization" important="true">
 			<host meta="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/meta.json"/>
 		</update>
     </updates>
@@ -18,4 +19,6 @@
 	<hooks>
 		<post script_path="RAID-DLC.lua" hook_id="lib/managers/localizationmanager"/>
 	</hooks>
+
+	
 </mod>	
