@@ -28,24 +28,32 @@ jobs:
         xml-file: './RAID-DynamicLocalization/supermod.xml'
         xpath: '//mod/@version'
 
-    - name: Create meta.json
-      id: create_meta_file
-      run: |
-        $(cat .\.github\meta.json) > ./meta.json
-
-    - name: Update meta.json
-      id: update_meta
-      # https://github.com/marketplace/actions/set-json-field
-      uses: jossef/action-set-json-field@v2.1
+    - id: render meta.json
+      # https://github.com/marketplace/actions/json-templater
+      uses: georgepstaylor/render-json-template@v0.0.13
       with:
-        file: meta.json
-        field: version
-        value: ${{ steps.getxml.outputs.info }}
-    #- name: Update version number in meta file
-      #id: create_meta_file_v2
+        json-file-path: .\.github\meta.json
+        output-file-name: meta.json
+        field-value-pairs: |
+          $[0][version]: ${{ steps.getxml.outputs.info }}
+          $.items: [1.7, "hello"]
+    - run: |
+        cat ${{ steps.render.outputs.rendered-json-file }}
+
+    #- name: Create meta.json
+      #id: create_meta_file
       #run: |
-        #$(cat .\.github\meta.json).Replace("%VERSION%", "${{ steps.getxml.outputs.info }}") > ./meta.json
-    
+        #$(cat .\.github\meta.json) > ./meta.json
+
+    #- name: Update meta.json
+      #id: update_meta
+      # https://github.com/marketplace/actions/set-json-field
+      #uses: jossef/action-set-json-field@v2.1
+      #with:
+        #file: meta.json
+        #field: version
+        #value: ${{ steps.getxml.outputs.info }}
+
     - name: GH Release
       # https://github.com/marketplace/actions/gh-release
       # You may pin to the exact commit or the version.
