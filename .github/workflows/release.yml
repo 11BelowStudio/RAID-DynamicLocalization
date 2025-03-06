@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest #windows-latest
     permissions:
       contents: write
     steps:
@@ -15,10 +15,16 @@ jobs:
       uses: ame-yu/action-delete-latest-release@v2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Archive Mod
-      run: |
-         .\.github\7za.exe -tzip a ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
-      shell: powershell
+      # https://github.com/marketplace/actions/action-zip
+      uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
+    #- name: Archive Mod
+      #run: |
+         #.\.github\7za.exe -tzip a ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
+      #shell: powershell
 
     - name: Get XML info
       # see https://github.com/marketplace/actions/get-xml-info
