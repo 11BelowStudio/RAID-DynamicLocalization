@@ -34,8 +34,8 @@ jobs:
       uses: ncipollo/release-action@v1.16.0
       with:
         allowUpdates: true
-        tag: ${{ github.ref }}
-        name: Release ${{ github.ref }}
+        tag: ${{ steps.getxml.outputs.version }}
+        name: Release ${{ steps.getxml.outputs.version }}
         draft: false
         prerelease: false
         body: |
