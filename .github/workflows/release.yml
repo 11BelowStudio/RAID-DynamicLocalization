@@ -28,10 +28,18 @@ jobs:
         xml-file: './RAID-DynamicLocalization/supermod.xml'
         xpath: '//mod/@version'
 
-    - name: Update version number in meta file
-      id: create_meta_file_v2
-      run: |
-        $(cat .\.github\meta.json).Replace("%VERSION%", ${{ steps.getxml.outputs.info }}) > ./meta.json
+
+    - name: Update meta.json
+      # https://github.com/marketplace/actions/set-json-field
+      uses: jossef/action-set-json-field@v2.1
+      with:
+        file: .\.github\meta.json
+        field: version
+        value: ${{ steps.getxml.outputs.info }}
+    #- name: Update version number in meta file
+      #id: create_meta_file_v2
+      #run: |
+        #$(cat .\.github\meta.json).Replace("%VERSION%", "${{ steps.getxml.outputs.info }}") > ./meta.json
     
     - name: GH Release
       # https://github.com/marketplace/actions/gh-release
