@@ -3,6 +3,6 @@
         "ident" : "DLC_autoupdate",
         "version" : "%VERSION%",
         "patchnotes_url" : "https://github.com/11BelowStudio/raid-dynamiclocalization/blob/main/README.md",
-        "download_url" : "https://github.com/11BelowStudio/raid-dynamiclocalization/releases/download/refs%2Fheads%2Fmain/RAID-DynamicLocalization.zip"
+        "download_url" : "https://github.com/11BelowStudio/raid-dynamiclocalization/releases/latest/download/RAID-DynamicLocalization.zip"
     }
 ]

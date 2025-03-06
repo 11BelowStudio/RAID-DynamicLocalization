@@ -11,7 +11,7 @@
 >
 	<updates>
         <update identifier="DLC_autoupdate" important="true">
-			<host meta="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/download/refs%2Fheads%2Fmain/meta.json"/>
+			<host meta="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/meta.json"/>
 		</update>
     </updates>
 
