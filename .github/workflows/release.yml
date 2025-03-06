@@ -17,19 +17,28 @@ jobs:
       run: |
          .\.github\7za.exe -tzip a ".\RAID-DynamicLocalization.zip" ".\RAID-DynamicLocalization"
       shell: powershell
-    
-    - name: Create New Release
-      id: create_release
-      uses: actions/create-release@v2
-      #env:
-      #  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Get XML info
+      # see https://github.com/marketplace/actions/get-xml-info
+      id: getxml
+      uses: mavrosxristoforos/get-xml-info@2.0
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        xml-file: './RAID-DynamicLocalization/supermod.xml'
+        xpath: '//mod'
+
+    - name: Create Release
+      # https://github.com/marketplace/actions/create-release
+      id: create_release
+      uses: ncipollo/release-action@v1.16.0
+      with:
+        allowUpdates: true
+        tag: ${{ github.ref }}
+        name: Release ${{ github.ref }}
         draft: false
         prerelease: false
         body: |
           This release zip is automatically updated on every push. You can ignore the "x commits behind" message.
+    
     - name: Upload Mod Zip to Release
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
@@ -41,13 +50,7 @@ jobs:
         asset_name: RAID-DynamicLocalization.zip
         asset_content_type: application/zip
 
-    - name: Get XML info
-      # see https://github.com/marketplace/actions/get-xml-info
-      id: getxml
-      uses: mavrosxristoforos/get-xml-info@2.0
-      with:
-        xml-file: './RAID-DynamicLocalization/supermod.xml'
-        xpath: '//mod'
+    
   
 
     - name: Update version number in meta file
