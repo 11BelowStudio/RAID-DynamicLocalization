@@ -28,12 +28,17 @@ jobs:
         xml-file: './RAID-DynamicLocalization/supermod.xml'
         xpath: '//mod/@version'
 
+    - name: Create meta.json
+      id: create_meta_file
+      run: |
+        $(cat .\.github\meta.json) > ./meta.json
 
     - name: Update meta.json
+      id: update_meta
       # https://github.com/marketplace/actions/set-json-field
       uses: jossef/action-set-json-field@v2.1
       with:
-        file: .\.github\meta.json
+        file: meta.json
         field: version
         value: ${{ steps.getxml.outputs.info }}
     #- name: Update version number in meta file
@@ -60,7 +65,7 @@ jobs:
         # Newline-delimited list of path globs for asset files to upload
         files: |
           RAID-DynamicLocalization.zip
-          .\.github\meta.json
+          meta.json
         # Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Can be `true`, `false`, or `legacy`. Uses GitHub api default if not provided
         make_latest: legacy
   
