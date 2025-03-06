@@ -11,16 +11,16 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@main
-    - name: Delete Existing Release
+    #- name: Delete Existing Release
       # see https://github.com/ame-yu/action-delete-latest-release?tab=readme-ov-file
       # and see https://github.com/actions/github-script
-      uses: actions/github-script@v4
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          const { owner, repo } = context.repo
-          const { data: { id } } = await github.repos.getLatestRelease({ owner, repo })
-          await github.repos.deleteRelease({ owner, repo, release_id: id })
+      #uses: actions/github-script@v4
+      #with:
+        #github-token: ${{secrets.GITHUB_TOKEN}}
+        #script: |
+          #const { owner, repo } = context.repo
+          #const { data: { id } } = await github.repos.getLatestRelease({ owner, repo })
+          #await github.repos.deleteRelease({ owner, repo, release_id: id })
 
     - name: Archive Mod
       # https://github.com/marketplace/actions/action-zip
