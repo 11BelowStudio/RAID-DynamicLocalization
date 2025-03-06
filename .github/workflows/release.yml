@@ -31,7 +31,7 @@ jobs:
     - name: Update version number in meta file
       id: create_meta_file_v2
       run: |
-        $(cat .\.github\meta.json).Replace("%VERSION%", ${{ steps.getxml.outputs }}) > ./meta.json
+        $(cat .\.github\meta.json).Replace("%VERSION%", ${{ steps.getxml.outputs.info }}) > ./meta.json
     
     - name: GH Release
       # https://github.com/marketplace/actions/gh-release
