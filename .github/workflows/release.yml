@@ -28,44 +28,31 @@ jobs:
         xml-file: './RAID-DynamicLocalization/supermod.xml'
         xpath: '//mod/@version'
 
-    - name: Create Release
-      # https://github.com/marketplace/actions/create-release
-      id: create_release
-      uses: ncipollo/release-action@v1.16.0
-      with:
-        allowUpdates: true
-        tag: ${{ steps.getxml.outputs.info }}
-        name: Release ${{ steps.getxml.outputs.info }}
-        draft: false
-        prerelease: false
-        body: |
-          This release zip is automatically updated on every push. You can ignore the "x commits behind" message.
-    
-    - name: Upload Mod Zip to Release
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./RAID-DynamicLocalization.zip
-        asset_name: RAID-DynamicLocalization.zip
-        asset_content_type: application/zip
-
-    
-  
-
     - name: Update version number in meta file
       id: create_meta_file_v2
       run: |
         $(cat .\.github\meta.json).Replace("%VERSION%", ${{ steps.getxml.outputs }}) > ./meta.json
-    - name: Upload meta file to Release
-      id: upload-meta-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: GH Release
+      # https://github.com/marketplace/actions/gh-release
+      # You may pin to the exact commit or the version.
+      # uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda
+      id: upload-release-asset 
+      uses: softprops/action-gh-release@v2.2.1
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./meta.json
-        asset_name: meta.json
-        asset_content_type: application/json
+        # Note-worthy description of changes in release
+        body: |
+          This release zip is automatically updated on every push. You can ignore the "x commits behind" message.
+        # Path to load note-worthy description of changes in release from
+        body_path: CHANGELOG.md
+        # Gives the release a custom name. Defaults to tag name
+        name: Release ${{ steps.getxml.outputs.info }}
+        # Gives a tag name. Defaults to github.GITHUB_REF
+        tag_name: ${{ steps.getxml.outputs.info }}
+        # Newline-delimited list of path globs for asset files to upload
+        files: |
+          RAID-DynamicLocalization.zip
+          meta.json
+        # Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Can be `true`, `false`, or `legacy`. Uses GitHub api default if not provided
+        make_latest: legacy
+  
