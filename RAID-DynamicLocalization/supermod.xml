@@ -14,7 +14,6 @@
 	<updates>
         <update identifier="RAID-DynamicLocalization" important="true" critical="true">
 			<host meta="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/meta.json"/>
-			<misc_data patchnotes_url="https://modworkshop.net/mod/49744?tab=changelog"/>"
 		</update>
     </updates>
 
