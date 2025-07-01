@@ -35,14 +35,14 @@ The default system only allows one to use Strings as values in the localization 
 
 * Strings
   * Same behaviour as in vanilla RAID-SuperBLT
-* Arrays
-  * _DLC_ will pick a value at random from the array, and perform the appropriate action on that value.
+* Tables/arrays
+  * _DLC_ will pick a value at random from the table, and perform the appropriate action on that value.
 * Zero-argument functions
   * _DLC_ will run that function each time the localized string needs localization, and will perform the appropriate action on the returned value.
 
 And yes, _DLC_ supports comically-excessive nesting of these datatypes!
-* Arrays may contain Strings, zero-argument functions, or more arrays!
-* Zero-argument functions may return Strings, arrays, or other zero-argument functions!
+* Tables may contain Strings, zero-argument functions, or more tables!
+* Zero-argument functions may return Strings, tables, or other zero-argument functions!
 * Any combo works, as long as it eventually returns a String.
 
 #### And how does that benefit mod authors?
@@ -67,8 +67,8 @@ end
 Hooks:Add("LocalizationManagerPostInit", "Example_DLC_Localization", function(loc)
 
     LocalizationManager:add_localized_strings({
-		menu_main_title = _someExampleDLCFunction,
-		footer_back = ["my $BTN_BACK key broke", "take me home", "no thanks"]
+	menu_main_title = _someExampleDLCFunction,
+	footer_back = {"My $BTN_CANCEL key broke", "take me home", "no thanks"}
     })
 end)
 ```
