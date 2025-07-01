@@ -34,7 +34,7 @@ This system works, but it has its drawbacks. Firstly, there is no easy way to ch
 The default system only allows one to use Strings as values in the localization table. _DLC_ extends this by allowing the values to be one of *three* datatypes! You can use:
 
 * Strings
-  * Same behaviour as in vanilla RAID-SuperBLT
+  * Same behaviour as in vanilla _RAID-SuperBLT_
 * Tables/arrays
   * _DLC_ will pick a value at random from the table, and perform the appropriate action on that value.
 * Zero-argument functions
@@ -49,7 +49,7 @@ And yes, _DLC_ supports comically-excessive nesting of these datatypes!
 
 Variety is the spice of life. Add some more variety to the UX of your mod via the magic of _DLC_!
 
-### How would one use _DLC_ in their mod?
+### How would one use _DLC_ in their _RAID-SuperBLT_ mod?
 
 **Check out _[Woher kommt Wolfgang?](https://modworkshop.net/mod/51306)_ for an example of DLC in action!**
 
@@ -75,9 +75,9 @@ end)
 
 Of course, you still need to add DLC as a dependency to your mod (otherwise things will end badly!)
 
-### How do I add _DLC_ as a dependency to my mod?
+### How do I add _DLC_ as a dependency to my _RAID-SuperBLT_ mod?
 
-Add this to your mod's SUPERMOD.xml:
+Add this to your mod's `supermod.xml`:
 
 ```xml
 <dependencies>
@@ -89,7 +89,7 @@ Add this to your mod's SUPERMOD.xml:
 </dependencies>
 ```
 
-### Do I need to give credit or anything if I make a mod which uses DLC as a dependency?
+### Do I need to give credit or anything if I make a mod which uses _DLC_ as a dependency?
 
 **RAID-DynamicLocalization** *(DLC)* is released under the MIT license - so you don't _need_ to faff around with credit or license malarkey if you just add *DLC* as a dependency to your mod (the malarkey only happens if you were to directly include *DLC*'s functionality within your mod).
 
