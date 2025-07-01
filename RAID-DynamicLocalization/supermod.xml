@@ -5,10 +5,11 @@
 	description="Provides functionality for changing localized strings whenever you want!"
 	author="11BelowStudio"
 	color="74 65 42"
-	version="1.0.0"
+	version="1.0.1"
 	priority="1000"
 	is_library = "true"
 	undisablable = "true"
+	image="icon.png"
 	contact="https://github.com/11BelowStudio/RAID-DynamicLocalization/issues"
 >
 	<updates>

@@ -1,4 +1,4 @@
-# DLC - **D**ynamic**L**o**c**alization for RAID WW2
+# **DLC** - **D**ynamic**L**o**c**alization for _RAID: World War II_
 
 Have you ever been making a mod for _RAID: World War II_ and found yourself wanting to change your custom localisation strings at runtime without needing to rely on macros or swapping out the string IDs? If so, your mod needs some **DLC** *(Dynamic Localization)*!
 
@@ -83,8 +83,8 @@ Add this to your mod's SUPERMOD.xml:
 <dependencies>
   <dependency
     name="DLC - Dynamic Localization"
-    meta = "https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/meta.json"
-    download_url = "https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/RAID-DynamicLocalization.zip"
+    meta="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/meta.json"
+    download_url="https://github.com/11BelowStudio/RAID-DynamicLocalization/releases/latest/download/RAID-DynamicLocalization.zip"
   /> 
 </dependencies>
 ```
