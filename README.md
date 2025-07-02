@@ -37,12 +37,13 @@ The default system only allows one to use Strings as values in the localization 
   * Same behaviour as in vanilla _RAID-SuperBLT_
 * Tables/arrays
   * _DLC_ will pick a value at random from the table, and perform the appropriate action on that value.
-* Zero-argument functions
+* Zero/One-argument functions
   * _DLC_ will run that function each time the localized string needs localization, and will perform the appropriate action on the returned value.
+  * (it will pass the original string ID as an argument to that function)
 
 And yes, _DLC_ supports comically-excessive nesting of these datatypes!
 * Tables may contain Strings, zero-argument functions, or more tables!
-* Zero-argument functions may return Strings, tables, or other zero-argument functions!
+* Zero/One-argument functions may return Strings, tables, or other zero/one-argument functions!
 * Any combo works, as long as it eventually returns a String.
 
 #### And how does that benefit mod authors?
@@ -64,12 +65,17 @@ local function _someExampleDLCFunction()
     return "raid ww2 my beloved"
 end
 
+local function _otherExampleDLCFunction(original_id)
+  return "I love to ".. original_id .. " in raid ww2!"
+end
+
 Hooks:Add("LocalizationManagerPostInit", "Example_DLC_Localization", function(loc)
 
-    LocalizationManager:add_localized_strings({
-	menu_main_title = _someExampleDLCFunction,
-	footer_back = {"My $BTN_CANCEL key broke", "take me home", "no thanks"}
-    })
+  LocalizationManager:add_localized_strings({
+	  menu_main_title = _someExampleDLCFunction,
+	  footer_back = {"My $BTN_CANCEL key broke", "take me home", "no thanks"},
+    menu_play = _otherExampleDLCFunction
+  })
 end)
 ```
 
