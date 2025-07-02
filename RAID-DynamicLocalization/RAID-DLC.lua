@@ -17,8 +17,8 @@ end
 
 local text = LocalizationManager.text
 function LocalizationManager:text(str, macros, ...)
-    local custom_loc = self._custom_localizations[str]
-    if custom_loc then
+  local custom_loc = self._custom_localizations[str]
+  if custom_loc then
 		custom_loc = dynamicLocalization(custom_loc, str)
 		-- goes back to the default SuperBLT behaviour.
 		macros = type(macros) == "table" and macros or {}
@@ -28,7 +28,7 @@ function LocalizationManager:text(str, macros, ...)
 		end)
 
 		return custom_loc
-    end
+  end
 
-    return text(self, str, macros, ...)
+  return text(self, str, macros, ...)
 end

@@ -59,10 +59,10 @@ You can add some DLC functionality to your mod like so:
 ```lua
 
 local function _someExampleDLCFunction()
-    if math.random() > 0.75 then
-      return "raid deez nutz lmao gottem"
-    end
-    return "raid ww2 my beloved"
+  if math.random() > 0.75 then
+    return "raid deez nutz lmao gottem"
+  end
+  return "raid ww2 my beloved"
 end
 
 local function _otherExampleDLCFunction(original_id)
@@ -70,7 +70,6 @@ local function _otherExampleDLCFunction(original_id)
 end
 
 Hooks:Add("LocalizationManagerPostInit", "Example_DLC_Localization", function(loc)
-
   LocalizationManager:add_localized_strings({
 	  menu_main_title = _someExampleDLCFunction,
 	  footer_back = {"My $BTN_CANCEL key broke", "take me home", "no thanks"},
