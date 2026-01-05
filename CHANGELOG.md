@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.0.0 - I love string formatting [2026-01-05]
+
+* DLC now has support for string formatting.
+* also fixed an oversight which caused recursive function calls to not include the `str_id` parameter
+
 ## 1.1.0 - more function-ality! [2025-07-02]
 
 * it now passes the string ID as a parameter to the function when it calls the function
