@@ -43,7 +43,7 @@ jobs:
     - name: render meta.json
       id: render
       # https://github.com/marketplace/actions/json-templater
-      uses: georgepstaylor/render-json-template@v0.0.13
+      uses: georgepstaylor/render-json-template@v0.0.14
       with:
         json-file-path: './.github/meta.json'
         output-file-name: meta.json
